@@ -1,0 +1,45 @@
+h2. python data types
+
+h3. numbers
+
+h3. strings
+
+* strings are a sequence of characters; behave as lists
+* strings = immutable 
+
+h3. tuples
+* ()
+* immutable lists
+* moetly read-only methods, since they're immutable
+* lists of heterogeneous things
+* ordered, like lists
+
+
+h3. lists
+
+* []
+* mutable
+* list(item) will convert a string to a list, then works with list methods, like sort, etc.
+
+h3. dictionaries
+
+* {}
+* associative arrays, key => value
+* mutable, unordered 
+
+h2. exercises
+
+* pg = (paragraph)
+* word frequency: pg.count('the') => 6
+* words in story: len(pg.split(' ')) => 78
+* letter count: pglist = list(pg); len(pglist) => 422
+* Replace all instances of "he" with "He": pg.replace('he', 'He') => but this does all occurrences of he, so it's not right
+* sorted alphapetically: sorted(pg_replace) => but this lists capitals first
+* sort by word length: 
+
+
+h2. notes
+
+* pydoc and help(thing) to check methods
+* cool kids say __ is "dunder"
+* hash() function
