@@ -10,7 +10,7 @@ h3. strings
 h3. tuples
 * ()
 * immutable lists
-* moetly read-only methods, since they're immutable
+* mostly read-only methods, since they're immutable
 * lists of heterogeneous things
 * ordered, like lists
 
