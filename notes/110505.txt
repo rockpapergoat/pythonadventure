@@ -18,7 +18,7 @@ h3. tuples
 h3. lists
 
 * []
-* mutable
+* mutable, ordered
 * list(item) will convert a string to a list, then works with list methods, like sort, etc.
 
 h3. dictionaries

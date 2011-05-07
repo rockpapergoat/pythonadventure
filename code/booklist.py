@@ -20,14 +20,22 @@ def usage():
 	"""print usage"""
 	pass
 
+def menu():
+	answer = input('What would you like to do?\n1. Add books\n2. Remove books\n3. Search for books\n4. Quit\n')
+	return answer.rstrip()
 
 def add_books():
 	"""method for adding books to a list"""
-	entry = input('Give me some book details in this format: Title, Author, Pages, ISBN\n')
+	'''title, author, pages, isbn, category'''
+	entry = input('Give me some book details in this format: Title, Author, Pages, ISBN, Category\n')
 	if len(entry) != 0:
 		print(entry.split(','))
 	else:
 		print('You need to pass me a book.')
+	pass
+
+def append_item():
+	"""append parameters to already entered records"""
 	pass
 
 def remove_books():
@@ -39,16 +47,14 @@ def find_books():
 
 
 	
-if __name__ == '__main__':
-	"""present a menu to choose tasks"""
-	choice = input('What would you like to do?\n1. Add books\n2. Remove books\n3. Search for books\n4. Quit\n')
-	if choice == 1:
-		add_books()
-	elif choice == 2:
-		print("Yo, this isn't working yet.")
-	elif choice == 3:
-		print("Yo, this isn't working yet.")
-	elif choice == 4:
-		print('Bye.')
-		exit(1)
-	pass
+"""present a menu to choose tasks"""
+choice = menu()
+if choice == '1':
+	add_books()
+elif choice == '2':
+	print("Yo, this isn't working yet.")
+elif choice == '3':
+	print("Yo, this isn't working yet.")
+elif choice == '4':
+	print('Bye.')
+	exit(1)
