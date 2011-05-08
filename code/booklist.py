@@ -21,7 +21,7 @@ def usage():
 	pass
 
 def menu():
-	answer = input('What would you like to do?\n1. Add books\n2. Remove books\n3. Search for books\n4. Quit\n')
+	answer = input('\n--------------------------\nWhat would you like to do?\n--------------------------\n1. Add books\n2. Remove books\n3. Search for books\n4. Edit an entry\n5. Quit\n\n')
 	return answer.rstrip()
 
 def add_books():
@@ -56,5 +56,7 @@ elif choice == '2':
 elif choice == '3':
 	print("Yo, this isn't working yet.")
 elif choice == '4':
-	print('Bye.')
-	exit(1)
+	print("Yo, this isn't working yet.")
+elif choice == '5':
+	print('Thanks for playing. See you next time.')
+	exit(0)
