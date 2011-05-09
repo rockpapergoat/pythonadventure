@@ -1,0 +1,10 @@
+110508, class notes
+
+h3. notes
+
+* __self__ and __init__
+
+
+h3. goals for next week
+
+* use optparse library to work out decent 
