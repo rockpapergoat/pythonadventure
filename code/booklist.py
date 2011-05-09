@@ -31,7 +31,7 @@ def add_books():
 		catalog.update(dict(zip(details,newbook)))
 		print(catalog)
 	else:
-		print('You need to  me a book.')
+		print('You need to pass me a book.')
 
 
 def append_item():
