@@ -1,0 +1,19 @@
+# 110525
+# working with shelve
+
+>>> import shelve
+>>> d = shelve.open('database')
+>>> d['id'] = "joe"
+>>> dlist = list(d.keys())
+>>> dlist
+['id']
+>>> d['id'] = "bob"
+>>> dlist
+['id']
+>>> dval = list(d.values())
+>>> dval
+['bob']
+
+d[str(int(time.time()))] = ['life with maury', 'sue clark', '95', '0909876', 'comedy']
+
+

@@ -1,0 +1,16 @@
+# working with shelve methods
+
+
+def add_record(database, data):
+	'''
+	data should be a dictionary.
+	there's no type checking here. just format as a dict.
+	['title', 'author', 'page number as string', 'isbn as string', 'genre']
+	'''
+	database[str(int(time.time()))] = data
+
+def show_all_records(database):
+	dvals = list(database.values())
+	return dvals
+
+

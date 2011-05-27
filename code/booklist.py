@@ -1,88 +1,136 @@
 #!/usr/local/bin/python3.2
 # 110506, Write a program to add and remove books from a list. Share and discuss.
-
-'''
+# 110526, 
+"""
 outline
 
-- set up a dictionary with this form: {author: "first, last", title: "title", pages: number, ISBN: number, category: "genre"}
+- set up a dictionary with this form: {timestamp: timestamp, author: "first, last", title: "title", pages: "number", ISBN: "number", genre: "genre"}
 - accept either stdin or a file (csv?)
 - add each line to the dict
 - add methods to add, remove, find books
 - add usage and menu
 
-'''
+"""
 
-def usage():
-	"""print usage"""
-	print('The menu describes usage. Please type a number.')
+import shelve
+import time
+import pprint
+import cmd
+import os.path
+
+class Book:
+	def __init__(self):
+		"""
+		books have these attributes:
+			timestamp
+			title
+			author
+			pages
+			isbn
+			genre
+		all are strings.
+		"""
+		self.timestamp = ''
+		self.title = ''
+		self.author = ''
+		self.pages = ''
+		self.isbn = ''
+		self.genre = ''
+
+class Library:
+	"""
+	methods dealing with library manipulation
+	"""
 	
-
-def menu():
-	answer = input('\n--------------------------\nWhat would you like to do?\n--------------------------\n1. Add books\n2. Remove books\n3. Search for books\n4. Edit an entry\n5. View all books\n6. Quit\n\n')
-	return answer.rstrip()
-
-def add_books():
-	"""method for adding books to a list"""
-	'''title, author, pages, isbn, category'''
-	entry = input('Give me some book details in this format: Title, Author, Pages, ISBN, Category\n')
-	if len(entry) != 0:
-		newbook = (entry.split(','))
-		details = ['title','author','pages','isbn','category']
-		catalog.update(dict(zip(details,newbook)))
-		print(catalog)
-	else:
-		print('You need to pass me a book.')
-
-
-def append_item():
-	"""append parameters to already entered records"""
+	def Keys(self, Keys):
+		"""set up some Keys"""
+		Keys = ['timestamp', 'title', 'author', 'pages', 'isbn', 'genre']
 	
-
-def remove_books():
-	'''method to remove books from catalog dict'''
-
-def show_catalog():
-	"""show what's in the catalog now"""
-	print('Your catalog includes:\n')
-	#for (key,value) in catalog:
-	#	print(catalog[key,value])
-	print(sorted(catalog))
-
-def find_books():
-	"""method to look up books in catalog"""
 	
+	def load(database):
+		if os.path.exists(database):
+			shelve.open(database)
+		#else:
+		#	# if it doesn't exist, create a new instance of the library
+		#	return shelve.open(database)
+
+	def save(self, database):
+		"""
+		close the db
+		"""
+		close(database)
+
+
+	def add_book(self, database, book):
+		"""
+		data should be a dictionary.
+		there's no type checking here. just format as a dict.
+		{title:, author:, pages:, isbn:, genre:}
+		"""
+		timestamp = str(int(time.time()))
+		if book:
+			database[Book.timestamp] = book
+			
+
+	def show_all_records(self, database):
+		"""show what's in the catalog now"""
+		print('Your library includes:\n')
+		dvals = list(database.values())
+		print(sorted(dvals))
+	
+	def append_item(self, database, title):
+		"""append parameters to already entered records"""
+	
+	def remove_book(self, database, title):
+		"""method to remove books from catalog dict"""
+
+	def find_book(self, database, title):
+		"""method to find a book from catalog dict"""
+		#found = 
+
 
 def not_working():
 	"""output something in place of methods that don't exist yet"""
 	print("Yo, this isn't working yet.")
 	
 
-	
-"""present a menu to choose tasks"""
 
-catalog = {}
-loopcount = 0
-while loopcount == 0:
-	choice = menu()
-	if choice == '1':
-		add_books()
-		menu()
-	elif choice == '2':
-		not_working()
-		menu()
-	elif choice == '3':
-		not_working()
-		menu()
-	elif choice == '4':
-		not_working()
-		menu()
-	elif choice == '5':
-		show_catalog()
-		menu()
-	elif choice == '6':
-		print('Thanks for playing. See you next time.')
-		loopcount = 1
-		exit(0)
-	else:
-		usage()
-		menu()
+class Menu(cmd.Cmd):
+	prompt = '::> '
+
+	def __init__(self):
+		cmd.Cmd.__init__(self)
+
+		library_filename = 'library'
+		self.library = Library.load(library_filename)
+
+	def do_add(self, arg):
+		"""
+		add a book
+		"""
+		newbook = Book()
+		newbook.title = input("Enter book title: ").strip()
+		newbook.author = input("Enter book author: ").strip()
+		self.library.add_book(newbook)
+
+	def do_l(self, arg):
+		"""
+		list the books
+		"""
+		print('here are all my books:')
+		for book in self.library.get_all_books():
+		    print("{} by {}".format(book.title, book.author))
+	do_list = do_l
+
+	def do_q(self, arg):
+		"""
+		quit
+		"""
+		self.library.save()
+		print('saved.')
+		print('bye!')
+		return True
+	do_EOF = do_quit = do_q
+
+my_menu = Menu()
+my_menu.cmdloop('\nWelcome to the library\n')

@@ -1,0 +1,12 @@
+notes, 5/19/11
+
+h3. features
+* field to log whether book is in, out, lost, destroyed
+* tack on datestamp to list entry when adding a book
+** use this both as id and record of when added
+
+
+h3. notes
+* list.append() works fine for adding to end of list
+* could probably also use list.insert(), though that adds to the beginning
+

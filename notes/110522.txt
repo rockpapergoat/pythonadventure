@@ -1,0 +1,14 @@
+notes, 5/22/11
+
+h3. code
+
+
+h3. notes
+
+looking over sample code, i basically understand what's going on but am having a difficult time thinking "pythonically" so far.
+
+* method(self, arg) used for instance methods within classes
+* calls self behind the scenes
+* practice working with core data types. inline help is clunky, and methods feel awkward to me
+* separate inputs and outputs to keep methods clean
+* code testing: how?
