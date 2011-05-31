@@ -1,2 +1,3 @@
 .hg/*
 .hgignore
+__pycache__

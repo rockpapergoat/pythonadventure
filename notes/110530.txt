@@ -1,0 +1,17 @@
+notes, 5/30/11
+
+* get current path:
+
+import os
+print('path: ', os.getcwd())
+
+
+def read_data(filename):
+    keys = ('isbn','title','author')
+    f = open(filename)
+    for line in f:
+        print(dict(zip(keys,line.rstrip().split('\t'))))
+    f.close()
+
+
+

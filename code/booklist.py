@@ -50,11 +50,11 @@ class Library:
 	def load(database):
 		if os.path.exists(database):
 			shelve.open(database)
-		#else:
-		#	# if it doesn't exist, create a new instance of the library
-		#	return shelve.open(database)
+		else:
+			# if it doesn't exist, create a new instance of the library
+			shelve.open(database)
 
-	def save(self, database):
+	def save(database):
 		"""
 		close the db
 		"""
@@ -68,8 +68,10 @@ class Library:
 		{title:, author:, pages:, isbn:, genre:}
 		"""
 		timestamp = str(int(time.time()))
+		print(timestamp)
 		if book:
 			database[Book.timestamp] = book
+			print(book)
 			
 
 	def show_all_records(self, database):
